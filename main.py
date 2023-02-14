@@ -5,17 +5,32 @@ from tkinter import Button, Entry, Label, Tk
 
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 600
+ROOT = ".../../GARY"
+TARGET_FOLDER = "/2020"
+DEST_REPO = "/Bannerz Work/", "/Test/"
 
 def copy_folders():
-    root_path = ".../../GARY"
-    target = "/2020"
+    root_path = ROOT
+    target = TARGET_FOLDER
     folder_list = [ folder[0] for folder in os.walk(root_path) if target in folder[0]]
 
     for folder in folder_list:
-        dest_path = folder.replace("/Bannerz Work/", "/Test/")
+        dest_path = folder.replace(DEST_REPO)
         shutil.copytree(folder, dest_path)
 
-          
+#TODO full path of the root directory where to start walk from
+# C:\...\Root_Directory\
+
+#TODO get only target folder name .i.e no back or front slashes
+
+#TODO Path of the Target directory where to save
+# C:\...\Target, E:\...\Target
+
+#TODO label to show status
+# traversing folders, Moving folder from x to y, x folder already exists
+
+#TODO Also print the status on the terminal
+
 
 window = Tk()
 window.title("Copy Folder")
@@ -54,15 +69,4 @@ window.mainloop()
 
 
 
-#TODO full path of the root directory where to start walk from
-# C:\...\Root_Directory\
 
-#TODO get only target folder name .i.e no back or front slashes
-
-#TODO Path of the Target directory where to save
-# C:\...\Target, E:\...\Target
-
-#TODO label to show status
-# traversing folders, Moving folder from x to y, x folder already exists
-
-#TODO Also print the status on the terminal
